@@ -62,17 +62,19 @@ public class FlutterAdformPlugin : FlutterPlugin, MethodCallHandler, ActivityAwa
     override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
     }
 
-    override fun onDetachedFromActivity() {
-
-    }
-
-    override fun onReattachedToActivityForConfigChanges(binding: ActivityPluginBinding) {
-    }
-
     override fun onAttachedToActivity(binding: ActivityPluginBinding) {
         activity = binding.activity
     }
 
+    override fun onDetachedFromActivity() {
+        activity = null
+    }
+
+    override fun onReattachedToActivityForConfigChanges(binding: ActivityPluginBinding) {
+        activity = binding.activity
+    }
+
     override fun onDetachedFromActivityForConfigChanges() {
+        activity = null
     }
 }
