@@ -1,0 +1,22 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="io.upsquare.flutteradform">
+
+    <!--[mandatory] Base permissions that are used in Adform SDK-->
+    <uses-feature
+        android:name="android.hardware.location.gps"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!--[optional] This is needed for additional information to be sent when collecting data in Adform SDK-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!--[optional] This is needed for additional information to be sent when collecting data in Adform SDK-->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!--[optional] This is needed when location data is used in ad requests in Adform SDK-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+</manifest>
