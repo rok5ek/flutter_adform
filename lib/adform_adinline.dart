@@ -22,6 +22,13 @@ class _AdformAdinlineState extends State<AdformAdinline>
     with WidgetsBindingObserver {
   UniqueKey _key = UniqueKey();
   static const ADFORM_INLINE_CHANNEL = "flutter_adform/adInline";
+  static const RESUMED = "resumed";
+  static const PAUSED = "paused";
+  static const DETACHED = "detached";
+  static const DISPOSE = "dispose";
+  static const ARG_MASTER_TAG_ID = "masterTagId";
+  static const ARG_WIDTH = "width";
+  static const ARG_HEIGHT = "height";
   MethodChannel _channel;
   Future<Size> adSize;
 
@@ -37,12 +44,15 @@ class _AdformAdinlineState extends State<AdformAdinline>
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (state == AppLifecycleState.resumed) {
-      _channel.invokeMethod("resumed");
-    } else if (state == AppLifecycleState.paused) {
-      _channel.invokeMethod("paused");
-    } else if (state == AppLifecycleState.detached) {
-      _channel.invokeMethod("detached");
+    // call lifecycle method only on Android
+    if (defaultTargetPlatform == TargetPlatform.android) {
+      if (state == AppLifecycleState.resumed) {
+        _channel.invokeMethod(RESUMED);
+      } else if (state == AppLifecycleState.paused) {
+        _channel.invokeMethod(PAUSED);
+      } else if (state == AppLifecycleState.detached) {
+        _channel.invokeMethod(DETACHED);
+      }
     }
   }
 
@@ -63,9 +73,9 @@ class _AdformAdinlineState extends State<AdformAdinline>
               key: _key,
               viewType: ADFORM_INLINE_CHANNEL,
               creationParams: <String, dynamic>{
-                "masterTagId": widget.masterTagId,
-                "width": widget.width.toInt(),
-                "height": widget.height.toInt()
+                ARG_MASTER_TAG_ID: widget.masterTagId,
+                ARG_WIDTH: widget.width.toInt(),
+                ARG_HEIGHT: widget.height.toInt()
               },
               creationParamsCodec: const StandardMessageCodec(),
               onPlatformViewCreated: _onPlatformViewCreated,
@@ -78,16 +88,15 @@ class _AdformAdinlineState extends State<AdformAdinline>
               key: _key,
               viewType: ADFORM_INLINE_CHANNEL,
               creationParams: <String, dynamic>{
-                "masterTagId": widget.masterTagId,
-                "width": widget.width.toInt(),
-                "height": widget.height.toInt()
+                ARG_MASTER_TAG_ID: widget.masterTagId,
+                ARG_WIDTH: widget.width.toInt(),
+                ARG_HEIGHT: widget.height.toInt()
               },
               creationParamsCodec: const StandardMessageCodec(),
               onPlatformViewCreated: _onPlatformViewCreated,
             ),
           );
         }
-
         return Text(
             '$defaultTargetPlatform is not yet supported by the plugin');
       },
@@ -98,7 +107,7 @@ class _AdformAdinlineState extends State<AdformAdinline>
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
     super.dispose();
-    _channel.invokeMethod("dispose");
+    _channel.invokeMethod(DISPOSE);
   }
 
   void _onPlatformViewCreated(int id) {

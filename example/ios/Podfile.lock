@@ -1,0 +1,29 @@
+PODS:
+  - AdformAdvertising (2.16.0)
+  - Flutter (1.0.0)
+  - flutteradform (0.0.1):
+    - AdformAdvertising (~> 2.16.0)
+    - Flutter
+
+DEPENDENCIES:
+  - Flutter (from `.symlinks/flutter/ios`)
+  - flutteradform (from `.symlinks/plugins/flutteradform/ios`)
+
+SPEC REPOS:
+  trunk:
+    - AdformAdvertising
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: ".symlinks/flutter/ios"
+  flutteradform:
+    :path: ".symlinks/plugins/flutteradform/ios"
+
+SPEC CHECKSUMS:
+  AdformAdvertising: cd9bb7811bc62aa65a2a55813943aca212bd8655
+  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  flutteradform: c3843ac9841913b5429d81b877b57db038234365
+
+PODFILE CHECKSUM: 3d0b47fea56a8b83ae6f63b820d201d800e0b436
+
+COCOAPODS: 1.9.1

@@ -19,10 +19,10 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Adform plugin example app'),
+          title: const Text('Adform plugin example api'),
         ),
         body: Center(
-          child: AdformAdinline(masterTagId: 111111, width: 300, height: 250),
+          child: AdformAdinline(masterTagId: 142493, width: 320, height: 250),
         ),
       ),
     );
