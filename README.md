@@ -19,6 +19,22 @@ with Flutter:
 $ flutter pub get
 ```
 
+## Setup
+
+### iOS
+Add this to Info.plist
+```
+<key>LSApplicationQueriesSchemes</key>
+<array>
+	<string>sms</string>
+	<string>tel</string>
+</array>
+<key>io.flutter.embedded_views_preview</key>
+<true/>
+```
+
+# Support
+
 ### Supported Platforms
 - `0.0.1` >= iOS
 - `0.0.1` >= AndroidX
