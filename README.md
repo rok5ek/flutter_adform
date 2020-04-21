@@ -19,9 +19,7 @@ with Flutter:
 $ flutter pub get
 ```
 
-## Setup
-
-### iOS
+### Setup iOS
 Add this to Info.plist
 ```
 <key>LSApplicationQueriesSchemes</key>
